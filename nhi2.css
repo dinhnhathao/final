@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: pink;
+    overflow: hidden;
+    transition: background-color 3s;
+}
+
+#button {
+    padding: 20px 40px;
+    font-size: 24px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#fireworks, #stars, #bigheart {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 1;
+}
+
+#bigheart {
+    display: none;  /* Đảm bảo trái tim ẩn khi bắt đầu */
+    width: 70px;
+    height: 70px;
+    background: #f20044;
+    position: absolute;
+    top: 50%;  /* Vị trí ban đầu ở giữa màn hình */
+    transform: rotate(-45deg);
+    animation: eart 0.6s linear infinite;
+    transition: top 5s ease; /* Thêm hiệu ứng chuyển động cho trái tim */
+}
+
+
+@keyframes eart {
+    0% {
+        transform: rotate(-45deg) scale(1.4);
+    }
+    20% {
+        transform: rotate(-45deg) scale(1.3);
+    }
+    100% {
+        transform: rotate(-45deg) scale(1.2);
+    }
+}
+
+.eart:before {
+    content: '';
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background: #f20044;
+    top: -50%;
+    border-radius: 50px;
+    box-shadow: -10px -10px 90px #f20044;
+}
+
+.eart:after {
+    content: '';
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background: #f20044;
+    right: -50%;
+    border-radius: 50px;
+    box-shadow: 10px 10px 90px #f20044;
+}
+
+#loveMessage {
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    opacity: 0;
+    transition: opacity 5s;
+    z-index: 5;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                 0 0 20px rgba(255, 255, 255, 0.6), 
+                 0 0 30px rgba(255, 255, 255, 0.4); /* Tạo ánh sáng mềm mại */
+    animation: glowing 2s infinite alternate; /* Hiệu ứng sáng nhẹ nhàng */
+}
+
+@keyframes glowing {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                     0 0 20px rgba(255, 255, 255, 0.6), 
+                     0 0 30px rgba(255, 255, 255, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 1), 
+                     0 0 30px rgba(255, 255, 255, 0.8), 
+                     0 0 40px rgba(255, 255, 255, 0.6);
+    }
+}
+
+
+
+.star {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 1.5s infinite;
+}
+
+.heart {
+    position: absolute;
+    font-size: 30px;
+    opacity: 1;
+    transition: transform 5s ease, opacity 5s ease;
+}
+
+
+.sparkle {
+    animation: sparkle 1s ease forwards;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes sparkle {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.5); opacity: 0; }
+}
+
+.earth { 
+    display: none; 
+    width: 300px; 
+    height: 300px; 
+    background-image: url('td.png'); 
+    border-radius: 50%; 
+    position: absolute; 
+    background-size: 600px 100%;
+    box-shadow: inset 0px 0px 5px #FDFfF29E,
+        inset 30px 0px 50px #000;
+    animation: rotate 10s infinite linear;
+    z-index: 2; /* Đưa Trái Đất lên trên layer của #stars */
+}
+
+#stars {
+    z-index: 1; /* Ngôi sao sẽ nằm dưới Trái Đất */
+}
+#hearts {
+    z-index: 3; 
+}
+
+
+@keyframes rotate {
+    0% {
+        background-position-x: 0px;
+    }
+    100% {
+        background-position-x: 1000px;
+    }
+}
